@@ -36,3 +36,4 @@ public class CashEventListener {
         cashFacade.createWallet(event.getMember());
     }
 }
+
