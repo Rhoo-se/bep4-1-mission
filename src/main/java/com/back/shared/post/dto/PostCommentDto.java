@@ -16,7 +16,6 @@ public class PostCommentDto {
     private final int authorId;
     private final String authorName;
     private final String content;
-
     public PostCommentDto(PostComment post) {
         this(
                 post.getId(),
