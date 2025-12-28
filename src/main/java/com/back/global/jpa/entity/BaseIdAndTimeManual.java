@@ -8,17 +8,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
-
 @MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
 @Getter
-public abstract class BaseIdAndTime extends BaseEntity{
+public class BaseIdAndTimeManual extends BaseEntity{
+
     @Id
-    @GeneratedValue(strategy = IDENTITY)
     private int id;
-    @CreatedDate
     private LocalDateTime createDate;
-    @LastModifiedDate
     private LocalDateTime modifyDate;
 }
