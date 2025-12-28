@@ -1,0 +1,28 @@
+package com.back.shared.member.dto;
+
+import com.back.boundedContext.member.domain.Member;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.time.LocalDateTime;
+
+@AllArgsConstructor
+@Getter
+public class MemberDto {
+    private final int id;
+    private final LocalDateTime createDate;
+    private final LocalDateTime modifyDate;
+    private final String username;
+    private final String password;
+    private final String nickname;
+
+    public MemberDto(Member member){
+        this.id = member.getId();
+        this.createDate = member.getCreateDate();
+        this.modifyDate = member.getModifyDate();
+        this.username = member.getUsername();
+        this.password = member.getPassword();
+        this.nickname = member.getNickname();
+    }
+
+}

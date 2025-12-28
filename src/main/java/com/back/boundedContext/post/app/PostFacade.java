@@ -2,9 +2,12 @@ package com.back.boundedContext.post.app;
 
 import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.post.domain.Post;
+import com.back.boundedContext.post.domain.PostMember;
+import com.back.boundedContext.post.out.PostMemberRepository;
 import com.back.boundedContext.post.out.PostRepository;
 import com.back.global.eventPublisher.EventPublisher;
 import com.back.global.rsData.RsData;
+import com.back.shared.member.dto.MemberDto;
 import com.back.shared.post.dto.PostDto;
 import com.back.shared.post.event.PostCreatedEvent;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +22,7 @@ import java.util.Optional;
 public class PostFacade {
     private final PostRepository postRepository;
     private final PostWriteUseCase postWriteUseCase;
-
+    private final PostMemberRepository postMemberRepository;
     @Transactional(readOnly = true)
     public long count() {
         return postRepository.count();
@@ -35,4 +38,17 @@ public class PostFacade {
         return postRepository.findById(id);
     }
 
+    public PostMember syncMember(MemberDto member){
+        PostMember postMember = new PostMember(
+                member.getUsername(),
+                "",
+                member.getNickname()
+        );
+
+        postMember.setId(member.getId());
+        postMember.setCreateDate(member.getCreateDate());
+        postMember.setCreateDate(member.getModifyDate());
+
+        return postMemberRepository.save(postMember);
+    }
 }
