@@ -1,6 +1,5 @@
 package com.back.boundedContext.market.app;
 
-
 import com.back.boundedContext.market.domain.MarketMember;
 import com.back.boundedContext.market.out.MarketMemberRepository;
 import com.back.global.eventPublisher.EventPublisher;
@@ -16,7 +15,7 @@ public class MarketSyncMemberUseCase {
     private final MarketMemberRepository marketMemberRepository;
     private final EventPublisher eventPublisher;
 
-    public MarketMember syncMember(MemberDto member){
+    public MarketMember syncMember(MemberDto member) {
         boolean isNew = !marketMemberRepository.existsById(member.getId());
 
         MarketMember _member = marketMemberRepository.save(
