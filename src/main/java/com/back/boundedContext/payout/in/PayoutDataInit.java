@@ -44,6 +44,7 @@ public class PayoutDataInit {
         this.payoutCollectItemsJob = payoutCollectItemsJob;
     }
 
+
     @Bean
     @Order(4)
     public ApplicationRunner payoutDataInitApplicationRunner() {
